@@ -1,0 +1,4 @@
+(executable
+ (public_name cameltoe)
+ (name main)
+ (libraries raylib))
