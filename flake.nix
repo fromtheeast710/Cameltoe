@@ -33,7 +33,7 @@
 
     ocaml-raylib =
     { lib
-    , fetchzip
+    , fetchgit
     , buildDunePackage
     , ocamlPackages
     , ocaml
@@ -46,11 +46,13 @@
     }: buildDunePackage rec {
         pname = "raylib";
         version = "1.3.1";
-        src = fetchzip {
-          url = "https://github.com/tjammer/raylib-ocaml/releases/download/${version}/${pname}-${version}.tbz";
-          hash = "sha256-9arAAXDnYVSQa5ACjknXoxLNZsCx61YxAYNMBPtqk5M=";
+        src = fetchgit {
+          url = "https://github.com/tjammer/raylib-ocaml";
+          hash = "sha256-Fv9BacTeGp1bTbhMzw6CmxEDCtyMLy7uHkoB7AhEVUI=";
+          fetchSubmodules = true;
         };
 
+        # BUG: RayGUI cannot be used
         buildInputs = [
           libGLU
           libXi
